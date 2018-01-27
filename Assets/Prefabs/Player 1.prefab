@@ -127,10 +127,10 @@ Camera:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0.019607844}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.5
-    y: 0
-    width: 0.5
-    height: 1
+    x: 0
+    y: 0.5
+    width: 1
+    height: 0.5
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -225,6 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c9795a96c094f4cbde4d65546aa9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerNumber: 0
   cam: {fileID: 20860916831454280}
   movementSettings:
     ForwardSpeed: 8
@@ -259,8 +260,8 @@ MonoBehaviour:
       m_RotationOrder: 4
     CurrentTargetSpeed: 8
   mouseLook:
-    XSensitivity: 2
-    YSensitivity: 2
+    XSensitivity: 3
+    YSensitivity: 3
     clampVerticalRotation: 1
     MinimumX: -45
     MaximumX: 90
@@ -315,6 +316,16 @@ MonoBehaviour:
     EndPos: {x: 0, y: 0, z: 0}
     PercentToEnd: 0
     NewObelisk: {fileID: 0}
+  OnObeliskSwitchShot:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnObeliskSwitchedTo:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &114067434675739170
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,6 +339,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerOwner: 0
   Occupied: 0
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &114351617438065630
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -48,6 +48,7 @@ public class ObeliskSwitcher : MonoBehaviour
         }
     }
 
+    public float MaxDestroyDistance = 5;
     public int PlayerNumber;
     public GameObject ObeliskPrefab;
     public FlyingInformation FlyingInfo = new FlyingInformation();
@@ -78,7 +79,7 @@ public class ObeliskSwitcher : MonoBehaviour
             
             transform.position = newPos;
         }
-	    else if (Input.GetAxis("SwitchObelisk") != 0)
+	    else if (Input.GetAxis("SwitchObelisk" + PlayerNumber) != 0)
         {
             SwitchToObelisk();
         }
@@ -103,14 +104,14 @@ public class ObeliskSwitcher : MonoBehaviour
 
                 if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER)
                 {
-                    print("NONONO YOU CANNOT DOOO THAT HHEHEHE");
+                    Destroy(ob.gameObject);
                     return;
                 }
 
                 OnObeliskSwitchShot.Invoke();
                 flyingTowards = hit.transform.gameObject;
                 GameObject obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
-                obelisk.GetComponent<Obelisk>().PlayerOwner = PlayerNumber;
+                obelisk.GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);
                 FlyingInfo.Init(ob.transform.position, transform.position);
             }
         }
