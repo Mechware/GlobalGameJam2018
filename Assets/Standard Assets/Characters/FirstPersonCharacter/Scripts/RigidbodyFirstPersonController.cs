@@ -2,13 +2,17 @@ using System;
 using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+using UnityEngine.Networking;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
     [RequireComponent(typeof (Rigidbody))]
     [RequireComponent(typeof (CapsuleCollider))]
-    public class RigidbodyFirstPersonController : MonoBehaviour
+    public class RigidbodyFirstPersonController : NetworkBehaviour
     {
+
+        private Transform cameraTransform;
+
         [Serializable]
         public class MovementSettings
         {
@@ -27,6 +31,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             public void UpdateDesiredTargetSpeed(Vector2 input, int playerNumber)
             {
+
+
 	            if (input == Vector2.zero) return;
 				if (input.x > 0 || input.x < 0)
 				{
@@ -127,11 +133,21 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
+            cameraTransform = GetComponentInChildren<Camera>().transform;
+            if (!isLocalPlayer) {
+                cameraTransform.GetComponent<Camera>().enabled=false;
+                cameraTransform.GetComponent<AudioListener>().enabled = false;
+            }
+
         }
 
 
         private void Update()
         {
+            if (!isLocalPlayer) {
+                return;
+            }
+
             RotateView();
 
             string player = PlayerNumber != -1 ? PlayerNumber.ToString() : "";
@@ -144,6 +160,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void FixedUpdate()
         {
+            if (!isLocalPlayer) {
+                return;
+            }
+
             GroundCheck();
             Vector2 input = GetInput();
 
