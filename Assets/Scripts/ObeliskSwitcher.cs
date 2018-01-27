@@ -147,7 +147,7 @@ public class ObeliskSwitcher : MonoBehaviour
             print("PLAYER " + (PlayerNumber + 1) + "DIEEED");
             return;
         }
-
+        flyingTowards = closestObelisk.gameObject;
         FlyingInfo.Init(closestObelisk.transform.position, transform.position);
     }
 }
