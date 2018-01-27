@@ -54,7 +54,11 @@ public class ObeliskSwitcher : MonoBehaviour
     public FlyingInformation FlyingInfo = new FlyingInformation();
 
     private GameObject flyingTowards;
-    
+
+    void Start()
+    {
+        GetComponent<Obelisk>().Occupied = true;
+    }
     
 	// Update is called once per frame
 	void Update () {
@@ -95,8 +99,15 @@ public class ObeliskSwitcher : MonoBehaviour
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
             if(ob != null)
             {
+                if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER)
+                {
+                    print("NONONO YOU CANNOT DOOO THAT HHEHEHE");
+                    return;
+                }
+                
                 flyingTowards = hit.transform.gameObject;
-                Instantiate(ObeliskPrefab, transform.position, transform.rotation);
+                GameObject obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
+                obelisk.GetComponent<Obelisk>().PlayerOwner = PlayerNumber;
                 FlyingInfo.Init(ob.transform.position, transform.position);
             }
         }

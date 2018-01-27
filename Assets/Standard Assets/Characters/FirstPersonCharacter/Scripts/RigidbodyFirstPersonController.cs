@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -77,6 +78,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
+        public int PlayerNumber;
+        
         public Camera cam;
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
@@ -130,7 +133,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
 
-            if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
+            if (CrossPlatformInputManager.GetButtonDown("Jump" + PlayerNumber) && !m_Jump)
             {
                 m_Jump = true;
             }
@@ -214,8 +217,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
             
             Vector2 input = new Vector2
                 {
-                    x = CrossPlatformInputManager.GetAxis("Horizontal"),
-                    y = CrossPlatformInputManager.GetAxis("Vertical")
+                    x = CrossPlatformInputManager.GetAxis("Horizontal" + PlayerNumber),
+                    y = CrossPlatformInputManager.GetAxis("Vertical" + PlayerNumber)
                 };
 			movementSettings.UpdateDesiredTargetSpeed(input);
             return input;
