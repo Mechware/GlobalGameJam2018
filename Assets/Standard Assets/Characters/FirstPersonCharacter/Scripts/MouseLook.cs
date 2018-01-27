@@ -30,7 +30,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         public void LookRotation(Transform character, Transform camera, int playerNumber)
         {
-            string player = playerNumber == -1 ? "" : playerNumber.ToString();
+            string player = playerNumber == 99 ? "" : playerNumber.ToString();
 
             float yRot = CrossPlatformInputManager.GetAxis("Mouse X" + player) * XSensitivity;
             float xRot = CrossPlatformInputManager.GetAxis("Mouse Y" + player) * YSensitivity;

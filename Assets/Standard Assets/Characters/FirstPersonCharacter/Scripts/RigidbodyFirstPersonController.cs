@@ -45,8 +45,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					CurrentTargetSpeed = ForwardSpeed;
 				}
 #if !MOBILE_INPUT
-                string player = playerNumber != -1 ? playerNumber.ToString() : "";
-	            if (Input.GetAxis("Run"+ player) != 0)
+                string player = playerNumber == 99 ? "" : playerNumber.ToString();
+                if (Input.GetAxis("Run"+ player) != 0)
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
 		            m_Running = true;
@@ -134,7 +134,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
 
-            string player = PlayerNumber != -1 ? PlayerNumber.ToString() : "";
+            string player = PlayerNumber == 99 ? "" : PlayerNumber.ToString();
             if (CrossPlatformInputManager.GetButtonDown("Jump" + player) && !m_Jump)
             {
                 m_Jump = true;
@@ -216,7 +216,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private Vector2 GetInput()
         {
-            string player = PlayerNumber != -1 ? PlayerNumber.ToString() : "";
+            string player = PlayerNumber == 99 ? "" : PlayerNumber.ToString();
 
             Vector2 input = new Vector2
                 {
