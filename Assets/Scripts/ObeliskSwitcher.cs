@@ -2,10 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityStandardAssets.Utility;
 
-public class ObeliskSwitcher : MonoBehaviour {
+public class ObeliskSwitcher : MonoBehaviour
+{
 
+    
     [Serializable]
     public class FlyingInformation
     {
@@ -45,13 +48,17 @@ public class ObeliskSwitcher : MonoBehaviour {
         }
     }
 
-    
+    public int PlayerNumber;
     public GameObject ObeliskPrefab;
-
     public FlyingInformation FlyingInfo = new FlyingInformation();
+    public UnityEvent OnObeliskSwitchShot, OnObeliskSwitchedTo;
 
     private GameObject flyingTowards;
-    
+
+    void Start()
+    {
+        GetComponent<Obelisk>().Occupied = true;
+    }
     
 	// Update is called once per frame
 	void Update () {
@@ -65,6 +72,7 @@ public class ObeliskSwitcher : MonoBehaviour {
             
             if (isDone)
             {
+                OnObeliskSwitchedTo.Invoke();
                 Destroy(flyingTowards);
             }
             
@@ -81,7 +89,8 @@ public class ObeliskSwitcher : MonoBehaviour {
         RaycastHit hit;
 
         Vector3 start = transform.position;
-        Vector3 dir = transform.TransformDirection(new Vector3(0, 0, 100));
+        Vector3 dir = GetComponentInChildren<Camera>().transform.forward;
+
         Physics.Raycast(start, dir, out hit);
 
         Debug.DrawRay(start, dir);
@@ -91,8 +100,17 @@ public class ObeliskSwitcher : MonoBehaviour {
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
             if(ob != null)
             {
+
+                if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER)
+                {
+                    print("NONONO YOU CANNOT DOOO THAT HHEHEHE");
+                    return;
+                }
+
+                OnObeliskSwitchShot.Invoke();
                 flyingTowards = hit.transform.gameObject;
-                Instantiate(ObeliskPrefab, transform.position, transform.rotation);
+                GameObject obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
+                obelisk.GetComponent<Obelisk>().PlayerOwner = PlayerNumber;
                 FlyingInfo.Init(ob.transform.position, transform.position);
             }
         }

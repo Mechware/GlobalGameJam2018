@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.InteropServices;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
@@ -24,7 +25,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             private bool m_Running;
 #endif
 
-            public void UpdateDesiredTargetSpeed(Vector2 input)
+            public void UpdateDesiredTargetSpeed(Vector2 input, int playerNumber)
             {
 	            if (input == Vector2.zero) return;
 				if (input.x > 0 || input.x < 0)
@@ -44,7 +45,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					CurrentTargetSpeed = ForwardSpeed;
 				}
 #if !MOBILE_INPUT
-	            if (Input.GetKey(RunKey))
+	            if (Input.GetAxis("Run"+ playerNumber) != 0)
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
 		            m_Running = true;
@@ -77,6 +78,8 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
+        public int PlayerNumber;
+        
         public Camera cam;
         public MovementSettings movementSettings = new MovementSettings();
         public MouseLook mouseLook = new MouseLook();
@@ -130,7 +133,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         {
             RotateView();
 
-            if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
+            if (CrossPlatformInputManager.GetButtonDown("Jump" + PlayerNumber) && !m_Jump)
             {
                 m_Jump = true;
             }
@@ -214,10 +217,10 @@ namespace UnityStandardAssets.Characters.FirstPerson
             
             Vector2 input = new Vector2
                 {
-                    x = CrossPlatformInputManager.GetAxis("Horizontal"),
-                    y = CrossPlatformInputManager.GetAxis("Vertical")
+                    x = CrossPlatformInputManager.GetAxis("Horizontal" + PlayerNumber),
+                    y = CrossPlatformInputManager.GetAxis("Vertical" + PlayerNumber)
                 };
-			movementSettings.UpdateDesiredTargetSpeed(input);
+			movementSettings.UpdateDesiredTargetSpeed(input, PlayerNumber);
             return input;
         }
 
@@ -230,7 +233,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
-            mouseLook.LookRotation (transform, cam.transform);
+            mouseLook.LookRotation (transform, cam.transform, PlayerNumber);
 
             if (m_IsGrounded || advancedSettings.airControl)
             {
