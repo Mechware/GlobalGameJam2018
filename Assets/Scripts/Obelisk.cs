@@ -22,7 +22,15 @@ public class Obelisk : MonoBehaviour
 
     public void Kill()
     {
-
+        if(Occupied)
+        {
+            // transfer player to closest obelisk
+            //GetComponent<MeshRenderer>().material.color.a = 0.5f;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

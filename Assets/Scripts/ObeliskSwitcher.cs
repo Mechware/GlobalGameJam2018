@@ -64,13 +64,15 @@ public class ObeliskSwitcher : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
 
-        
+
+        string player = PlayerNumber != -1 ? PlayerNumber.ToString() : "";
 
         if (FlyingInfo.FlyingTowardSomething)
         {
             Vector3 newPos;
             bool isDone = FlyingInfo.GetNextPosition(out newPos);
-            
+
+
             if (isDone)
             {
                 OnObeliskSwitchedTo.Invoke();
@@ -79,7 +81,7 @@ public class ObeliskSwitcher : MonoBehaviour
             
             transform.position = newPos;
         }
-	    else if (Input.GetAxis("SwitchObelisk" + PlayerNumber) != 0)
+	    else if (Input.GetAxis("SwitchObelisk" + player) != 0)
         {
             SwitchToObelisk();
         }
