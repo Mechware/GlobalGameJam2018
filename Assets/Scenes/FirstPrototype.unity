@@ -236,12 +236,22 @@ Prefab:
     - target: {fileID: 20860916831454280, guid: 301a8ed64545c0c4999cc738e7b424e7,
         type: 2}
       propertyPath: m_NormalizedViewPortRect.height
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 20860916831454280, guid: 301a8ed64545c0c4999cc738e7b424e7,
         type: 2}
       propertyPath: m_NormalizedViewPortRect.y
-      value: 0.5
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011783765841526, guid: 301a8ed64545c0c4999cc738e7b424e7,
+        type: 2}
+      propertyPath: mouseLook.XSensitivity
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114011783765841526, guid: 301a8ed64545c0c4999cc738e7b424e7,
+        type: 2}
+      propertyPath: mouseLook.YSensitivity
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 301a8ed64545c0c4999cc738e7b424e7, type: 2}
@@ -386,6 +396,10 @@ Prefab:
         type: 2}
       propertyPath: m_NormalizedViewPortRect.height
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1331038756944898, guid: ff8c75a8dd5edce44a7c40d6e88c1c45, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff8c75a8dd5edce44a7c40d6e88c1c45, type: 2}

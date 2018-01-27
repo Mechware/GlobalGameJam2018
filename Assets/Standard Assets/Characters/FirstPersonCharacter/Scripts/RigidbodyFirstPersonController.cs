@@ -25,7 +25,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             private bool m_Running;
 #endif
 
-            public void UpdateDesiredTargetSpeed(Vector2 input)
+            public void UpdateDesiredTargetSpeed(Vector2 input, int playerNumber)
             {
 	            if (input == Vector2.zero) return;
 				if (input.x > 0 || input.x < 0)
@@ -45,7 +45,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 					CurrentTargetSpeed = ForwardSpeed;
 				}
 #if !MOBILE_INPUT
-	            if (Input.GetKey(RunKey))
+	            if (Input.GetAxis("Run"+ playerNumber) != 0)
 	            {
 		            CurrentTargetSpeed *= RunMultiplier;
 		            m_Running = true;
@@ -220,7 +220,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     x = CrossPlatformInputManager.GetAxis("Horizontal" + PlayerNumber),
                     y = CrossPlatformInputManager.GetAxis("Vertical" + PlayerNumber)
                 };
-			movementSettings.UpdateDesiredTargetSpeed(input);
+			movementSettings.UpdateDesiredTargetSpeed(input, PlayerNumber);
             return input;
         }
 
@@ -233,7 +233,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             // get the rotation before it's changed
             float oldYRotation = transform.eulerAngles.y;
 
-            mouseLook.LookRotation (transform, cam.transform);
+            mouseLook.LookRotation (transform, cam.transform, PlayerNumber);
 
             if (m_IsGrounded || advancedSettings.airControl)
             {

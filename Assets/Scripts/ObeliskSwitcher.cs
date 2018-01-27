@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityStandardAssets.Utility;
 
 public class ObeliskSwitcher : MonoBehaviour
 {
 
-    public int PlayerNumber;
     
     [Serializable]
     public class FlyingInformation
@@ -48,10 +48,10 @@ public class ObeliskSwitcher : MonoBehaviour
         }
     }
 
-    
+    public int PlayerNumber;
     public GameObject ObeliskPrefab;
-
     public FlyingInformation FlyingInfo = new FlyingInformation();
+    public UnityEvent OnObeliskSwitchShot, OnObeliskSwitchedTo;
 
     private GameObject flyingTowards;
 
@@ -72,6 +72,7 @@ public class ObeliskSwitcher : MonoBehaviour
             
             if (isDone)
             {
+                OnObeliskSwitchedTo.Invoke();
                 Destroy(flyingTowards);
             }
             
@@ -99,12 +100,14 @@ public class ObeliskSwitcher : MonoBehaviour
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
             if(ob != null)
             {
+
                 if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER)
                 {
                     print("NONONO YOU CANNOT DOOO THAT HHEHEHE");
                     return;
                 }
-                
+
+                OnObeliskSwitchShot.Invoke();
                 flyingTowards = hit.transform.gameObject;
                 GameObject obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
                 obelisk.GetComponent<Obelisk>().PlayerOwner = PlayerNumber;
