@@ -19,18 +19,4 @@ public class Obelisk : MonoBehaviour
         PlayerOwner = playerNum;
         GetComponent<MeshRenderer>().material.color = colors[playerNum];
     }
-
-    public void Kill()
-    {
-        if(Occupied)
-        {
-            // transfer player to closest obelisk
-            //GetComponent<MeshRenderer>().material.color.a = 0.5f;
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-    }
-
 }

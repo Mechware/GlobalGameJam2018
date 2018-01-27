@@ -54,6 +54,8 @@ public class ObeliskSwitcher : MonoBehaviour
     public FlyingInformation FlyingInfo = new FlyingInformation();
     public UnityEvent OnObeliskSwitchShot, OnObeliskSwitchedTo;
 
+    private List<Obelisk> ownedObelisks = new List<Obelisk>();
+
     private GameObject flyingTowards;
 
     void Start()
@@ -83,11 +85,11 @@ public class ObeliskSwitcher : MonoBehaviour
         }
 	    else if (Input.GetAxis("SwitchObelisk" + player) != 0)
         {
-            SwitchToObelisk();
+            CheckSwitchObelisk();
         }
 	}
 
-    private void SwitchToObelisk()
+    private void CheckSwitchObelisk()
     {
         RaycastHit hit;
 
@@ -103,10 +105,16 @@ public class ObeliskSwitcher : MonoBehaviour
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
             if(ob != null)
             {
-
                 if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER)
                 {
-                    Destroy(ob.gameObject);
+                    if(ob.Occupied)
+                    {
+                        ob.GetComponent<ObeliskSwitcher>().DieAndSwitch();
+                    }
+                    else
+                    {
+                        Destroy(ob.gameObject);
+                    }
                     return;
                 }
 
@@ -114,8 +122,32 @@ public class ObeliskSwitcher : MonoBehaviour
                 flyingTowards = hit.transform.gameObject;
                 GameObject obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
                 obelisk.GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);
+                ownedObelisks.Add(obelisk.GetComponent<Obelisk>());
                 FlyingInfo.Init(ob.transform.position, transform.position);
             }
         }
+    }
+
+    private void DieAndSwitch()
+    {
+        // new pos
+        Obelisk closestObelisk = null;
+        float minDistance = float.MaxValue;
+        foreach(Obelisk ob in ownedObelisks)
+        {
+            if (ob == null) continue;
+            if(Vector3.Distance(transform.position, ob.transform.position) < minDistance)
+            {
+                closestObelisk = ob;
+            }
+        }
+
+        if(closestObelisk == null)
+        {
+            print("PLAYER " + (PlayerNumber + 1) + "DIEEED");
+            return;
+        }
+
+        FlyingInfo.Init(closestObelisk.transform.position, transform.position);
     }
 }
