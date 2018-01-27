@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obelisk : MonoBehaviour {
+public class Obelisk : MonoBehaviour
+{
 
+	public int PlayerOwner;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -13,6 +16,7 @@ public class Obelisk : MonoBehaviour {
 	void Update () {
 		
 	}
-
-
+	
+	
+	
 }

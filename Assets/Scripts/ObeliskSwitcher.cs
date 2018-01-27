@@ -4,8 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.Utility;
 
-public class ObeliskSwitcher : MonoBehaviour {
+public class ObeliskSwitcher : MonoBehaviour
+{
 
+    public int PlayerNumber;
+    
     [Serializable]
     public class FlyingInformation
     {
@@ -81,7 +84,8 @@ public class ObeliskSwitcher : MonoBehaviour {
         RaycastHit hit;
 
         Vector3 start = transform.position;
-        Vector3 dir = transform.TransformDirection(new Vector3(0, 0, 100));
+        Vector3 dir = GetComponentInChildren<Camera>().transform.forward;
+
         Physics.Raycast(start, dir, out hit);
 
         Debug.DrawRay(start, dir);
