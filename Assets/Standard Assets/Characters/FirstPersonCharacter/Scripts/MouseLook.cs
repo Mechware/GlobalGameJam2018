@@ -28,7 +28,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         }
 
 
-        public void LookRotation(Transform character, Transform camera, int playerNumber)
+        public void LookRotation(Transform character, Transform camera)
         {
             
 
