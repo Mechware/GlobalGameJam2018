@@ -67,7 +67,7 @@ public class ObeliskSwitcher : MonoBehaviour
 	void Update () {
 
 
-        string player = PlayerNumber != -1 ? PlayerNumber.ToString() : "";
+        string player = PlayerNumber == 99 ? "" : PlayerNumber.ToString();
 
         if (FlyingInfo.FlyingTowardSomething)
         {

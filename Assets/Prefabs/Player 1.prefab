@@ -265,7 +265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c9795a96c094f4cbde4d65546aa9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: 0
+  PlayerNumber: -1
   cam: {fileID: 20860916831454280}
   movementSettings:
     ForwardSpeed: 8
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDestroyDistance: 5
-  PlayerNumber: 0
+  PlayerNumber: -1
   ObeliskPrefab: {fileID: 1383145667112864, guid: daf118e508cc8cb48a9ca50d362ecbbe,
     type: 2}
   FlyingInfo:
@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8fa02eefe216384fb1b3a75339aeefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerOwner: 0
+  PlayerOwner: -1
   Occupied: 0
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
