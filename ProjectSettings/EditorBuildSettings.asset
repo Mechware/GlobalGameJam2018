@@ -11,3 +11,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/The Actual Scene.unity
     guid: 8ac6393b575b9c3448f1b0c8e7b64a3d
+  - enabled: 1
+    path: Assets/Scenes/Maddie's Scene.unity
+    guid: 97112617e911db54494a5b7ace83d2d8
