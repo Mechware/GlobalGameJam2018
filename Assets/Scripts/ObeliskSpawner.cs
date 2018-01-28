@@ -13,44 +13,34 @@ public class ObeliskSpawner : NetworkBehaviour {
 
     private BoxCollider SpawnArea;
 
+    public bool Online = true;
 
 	// Use this for initialization
-	/*void Start () {
-        SpawnArea = GetComponent<BoxCollider>();
+	void Start () {
 
-        Spawn1.transform.position=SpawnArea.bounds.min;
-        Spawn2.transform.position=SpawnArea.bounds.max;
+        if(!Online)
+        {
+            SpawnArea = GetComponent<BoxCollider>();
 
-       // RandomlySpawnObelisks(NumberOfObelisks);
-       // SpawnPlayers();
-	}*/
+            Spawn1.transform.position = SpawnArea.bounds.min;
+            Spawn2.transform.position = SpawnArea.bounds.max;
+
+            RandomlySpawnObelisks(NumberOfObelisks);
+            //SpawnPlayers();
+        }
+	}
 
     public override void OnStartServer() {
-        SpawnArea = GetComponent<BoxCollider>();
+        if(Online)
+        {
+            SpawnArea = GetComponent<BoxCollider>();
 
-        Spawn1.transform.position=SpawnArea.bounds.min;
-        Spawn2.transform.position=SpawnArea.bounds.max;
+            Spawn1.transform.position = SpawnArea.bounds.min;
+            Spawn2.transform.position = SpawnArea.bounds.max;
 
-        RandomlySpawnObelisks(NumberOfObelisks);
-
+            RandomlySpawnObelisks(NumberOfObelisks);
+        }
     }
-	
-    /*void SpawnPlayers()
-    {
-        Player1.transform.position = SpawnArea.bounds.min;
-        Player1.transform.LookAt(SpawnArea.bounds.center);
-        Quaternion temp = Player1.transform.rotation;
-        temp.x = 0;
-        temp.z = 0;
-        Player1.transform.rotation = temp;
-
-        Player2.transform.position = SpawnArea.bounds.max;
-        Player2.transform.LookAt(SpawnArea.bounds.center);
-        temp = Player2.transform.rotation;
-        temp.x = 0;
-        temp.z = 0;
-        Player2.transform.rotation = temp;
-    }*/
 
     void RandomlySpawnObelisks(int amount)
     {
