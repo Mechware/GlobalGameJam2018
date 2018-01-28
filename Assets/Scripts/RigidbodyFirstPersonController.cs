@@ -27,7 +27,7 @@ public class RigidbodyFirstPersonController : MonoBehaviour
         private bool m_Running;
 #endif
 
-        public void UpdateDesiredTargetSpeed(Vector2 input, int playerNumber)
+        public void UpdateDesiredTargetSpeed(Vector2 input)
         {
 	        if (input == Vector2.zero) return;
 			if (input.x > 0 || input.x < 0)
@@ -79,9 +79,6 @@ public class RigidbodyFirstPersonController : MonoBehaviour
         [Tooltip("set it to 0.1 or more if you get stuck in wall")]
         public float shellOffset; //reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)
     }
-
-
-    public int PlayerNumber;
         
     public Camera cam;
     public MovementSettings movementSettings = new MovementSettings();
@@ -240,7 +237,7 @@ public class RigidbodyFirstPersonController : MonoBehaviour
                 x = CrossPlatformInputManager.GetAxis("Horizontal" ),
                 y = CrossPlatformInputManager.GetAxis("Vertical" )
             };
-		movementSettings.UpdateDesiredTargetSpeed(input, PlayerNumber);
+		movementSettings.UpdateDesiredTargetSpeed(input);
         return input;
     }
 
@@ -253,7 +250,7 @@ public class RigidbodyFirstPersonController : MonoBehaviour
         // get the rotation before it's changed
         float oldYRotation = transform.eulerAngles.y;
 
-        mouseLook.LookRotation (transform, cam.transform, PlayerNumber);
+        mouseLook.LookRotation (transform, cam.transform);
 
         if (m_IsGrounded || advancedSettings.airControl)
         {
