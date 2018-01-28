@@ -416,6 +416,7 @@ GameObject:
   - component: {fileID: 114339537487815794}
   - component: {fileID: 114959066745429050}
   - component: {fileID: 114147383405680910}
+  - component: {fileID: 82724663632570622}
   m_Layer: 0
   m_Name: Online Player
   m_TagString: Untagged
@@ -1042,6 +1043,86 @@ AudioListener:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1043130616566838}
   m_Enabled: 1
+--- !u!82 &82724663632570622
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1917497125732324}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 3989524b5acc3554095c971c0e437e4c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114067898288894226
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1097,6 +1178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lazer: {fileID: 0}
   speed: {fileID: 0}
+  sound: {fileID: 0}
 --- !u!114 &114198427090104588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1155,7 +1237,6 @@ MonoBehaviour:
   red: {fileID: 0}
   blue: {fileID: 0}
   Occupied: 1
-  playNum: {fileID: 0}
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
@@ -1260,8 +1341,8 @@ MonoBehaviour:
   OnObeliskSwitchedTo:
     m_PersistentCalls:
       m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
   playNum: {fileID: 114910988493649180}
   red: {fileID: 1885061162280426}
   blue: {fileID: 1648024249446138}
@@ -1335,7 +1416,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 4592180651563944}
-  PlayerNumber: 1
   cam: {fileID: 20629016293972336}
   movementSettings:
     ForwardSpeed: 8
