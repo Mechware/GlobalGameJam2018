@@ -55,6 +55,8 @@ public class ObeliskSwitcher : NetworkBehaviour {
     public UnityEvent OnObeliskSwitchShot, OnObeliskSwitchedTo;
     public Text playNum;
 
+    public GameObject red, blue;
+
     private List<Obelisk> ownedObelisks = new List<Obelisk>();
 
     private GameObject flyingTowards;
@@ -78,14 +80,15 @@ public class ObeliskSwitcher : NetworkBehaviour {
     
     void changeID(int number) {
         playNum.text = number.ToString();
+
+        if(number == 0) {
+            red.SetActive(true);
+        } else {
+            blue.SetActive(true);
+        }
+
     }
 
-    /*  void Start()
-      {
-          GetComponent<Obelisk>().Occupied = true;
-      }*/
-
-    // Update is called once per frame
     void Update () {
 
 
