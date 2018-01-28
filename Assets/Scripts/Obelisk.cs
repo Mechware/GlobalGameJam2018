@@ -14,6 +14,7 @@ public class Obelisk : NetworkBehaviour
     [SyncVar (hook = "changeNumber")]
 	public int PlayerOwner = NO_OWNER;
 	public bool Occupied = false;
+    public Text playNum;
 
     public Color[] colors = new Color[]
     {
@@ -22,8 +23,11 @@ public class Obelisk : NetworkBehaviour
     };
 
     public override void OnStartServer() {
-        transform.Find("PlayerID").gameObject.GetComponentInChildren<Text>().text = PlayerOwner.ToString();
+        if(playNum!=null)
+        playNum.text = PlayerOwner.ToString();
     }
+
+
 
     public void SetPlayerOwnership(int playerNum)
     {
@@ -33,7 +37,8 @@ public class Obelisk : NetworkBehaviour
     }
 
     public void changeNumber(int owner) {
-        transform.Find("PlayerID").gameObject.GetComponentInChildren<Text>().text = owner.ToString();
+        if(playNum != null)
+        playNum.text = owner.ToString();
     }
 
 }
