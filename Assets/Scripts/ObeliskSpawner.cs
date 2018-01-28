@@ -26,6 +26,7 @@ public class ObeliskSpawner : NetworkBehaviour {
             Spawn2.transform.position = SpawnArea.bounds.max;
 
             RandomlySpawnObelisks(NumberOfObelisks);
+            RandomSpawner();
             //SpawnPlayers();
         }
 	}
@@ -39,6 +40,7 @@ public class ObeliskSpawner : NetworkBehaviour {
             Spawn2.transform.position = SpawnArea.bounds.max;
 
             RandomlySpawnObelisks(NumberOfObelisks);
+            RandomSpawner();
         }
     }
 
@@ -64,4 +66,16 @@ public class ObeliskSpawner : NetworkBehaviour {
 	void Update () {
 		
 	}
+
+    void RandomSpawner() {
+        float num;
+        RandomlySpawnObelisks(1);
+        num = Random.Range(15, 40);
+        StartCoroutine(WaitToSpawn(num));
+    }
+
+    IEnumerator WaitToSpawn(float seconds) {
+         yield return new WaitForSeconds(seconds);
+         RandomSpawner();
+    }
 }
