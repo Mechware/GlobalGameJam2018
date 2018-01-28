@@ -49,6 +49,7 @@ public class ObeliskSwitcher : NetworkBehaviour
         }
     }
 
+
     public float MaxDestroyDistance = 5;
     public int PlayerNumber;
     public GameObject ObeliskPrefab;
@@ -59,10 +60,14 @@ public class ObeliskSwitcher : NetworkBehaviour
 
     private GameObject flyingTowards;
 
-    void Start()
-    {
+    public override void OnStartLocalPlayer() {
         GetComponent<Obelisk>().Occupied = true;
     }
+
+  /*  void Start()
+    {
+        GetComponent<Obelisk>().Occupied = true;
+    }*/
     
 	// Update is called once per frame
 	void Update () {
@@ -108,34 +113,34 @@ public class ObeliskSwitcher : NetworkBehaviour
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
             if(ob != null)
             {
-                if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER)
-                {
-                    if(ob.Occupied)
-                    {
+                if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER) {
+                    if (ob.Occupied) {
                         ob.GetComponent<ObeliskSwitcher>().DieAndSwitch();
+                    } else {
+                        //Play error sound???
                     }
-                    else
-                    {
-                        Destroy(ob.gameObject);
-                    }
-                    return;
+                } else {
+                    //The object is yours or nobodies, therefore you can transmitt your STDs to it
+                    OnObeliskSwitchShot.Invoke();
+                    flyingTowards = hit.transform.gameObject;
+                    CmdSpawnObelisk();
+
+                    FlyingInfo.Init(ob.transform.position, transform.position);
+                    CmdDestroyObelisk(ob.gameObject);
+
                 }
 
-                OnObeliskSwitchShot.Invoke();
-                flyingTowards = hit.transform.gameObject;
-                CmdSpawnObelisk();
-              /*  var obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
-                NetworkServer.Spawn(obelisk);
-                obelisk.GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);
-                ownedObelisks.Add(obelisk.GetComponent<Obelisk>());*/
-                FlyingInfo.Init(ob.transform.position, transform.position);
             }
         }
     }
 
     [Command]
+    void CmdDestroyObelisk(GameObject ob) {
+        Destroy(ob);
+    }
+
+    [Command]
     void CmdSpawnObelisk() {
-        Destroy(flyingTowards);
         var obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
         NetworkServer.Spawn(obelisk);
         obelisk.GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);

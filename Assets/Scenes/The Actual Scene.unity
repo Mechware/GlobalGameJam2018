@@ -3842,11 +3842,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 780611a67e8e941a2b3aa96e5915a793, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1103281157 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1998905828633254, guid: 892222148b081064eb5be74dd2d4eb63,
+    type: 2}
+  m_PrefabInternal: {fileID: 607419025}
 --- !u!4 &1103281160 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4333284212945136, guid: 892222148b081064eb5be74dd2d4eb63,
     type: 2}
   m_PrefabInternal: {fileID: 607419025}
+--- !u!114 &1103281161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1103281157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 137
+    i1: 34
+    i2: 34
+    i3: 20
+    i4: 139
+    i5: 8
+    i6: 16
+    i7: 100
+    i8: 235
+    i9: 91
+    i10: 231
+    i11: 77
+    i12: 210
+    i13: 212
+    i14: 235
+    i15: 99
+  m_ServerOnly: 1
+  m_LocalPlayerAuthority: 0
 --- !u!1001 &1439596184
 Prefab:
   m_ObjectHideFlags: 0
@@ -4191,13 +4228,14 @@ MonoBehaviour:
   m_ScriptCRCCheck: 1
   m_MaxDelay: 0.01
   m_LogLevel: 2
-  m_PlayerPrefab: {fileID: 1434464315077308, guid: 301a8ed64545c0c4999cc738e7b424e7,
+  m_PlayerPrefab: {fileID: 1377340484588102, guid: 49635cf94298bed4784a2bd6dbb8c7bb,
     type: 2}
   m_AutoCreatePlayer: 1
   m_PlayerSpawnMethod: 1
   m_OfflineScene: 
   m_OnlineScene: 
-  m_SpawnPrefabs: []
+  m_SpawnPrefabs:
+  - {fileID: 1383145667112864, guid: daf118e508cc8cb48a9ca50d362ecbbe, type: 2}
   m_CustomConfig: 0
   m_MaxConnections: 4
   m_ConnectionConfig:
