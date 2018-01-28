@@ -400,40 +400,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 199944785708652352, guid: ff8c75a8dd5edce44a7c40d6e88c1c45,
-        type: 2}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
-    - target: {fileID: 198359291051693792, guid: ff8c75a8dd5edce44a7c40d6e88c1c45,
-        type: 2}
-      propertyPath: randomSeed
-      value: -1697204887
-      objectReference: {fileID: 0}
-    - target: {fileID: 198359291051693792, guid: ff8c75a8dd5edce44a7c40d6e88c1c45,
-        type: 2}
-      propertyPath: TrailModule.lifetime.scalar
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 199944785708652352, guid: ff8c75a8dd5edce44a7c40d6e88c1c45,
-        type: 2}
-      propertyPath: m_RenderMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 199944785708652352, guid: ff8c75a8dd5edce44a7c40d6e88c1c45,
-        type: 2}
-      propertyPath: m_LengthScale
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4550479756397754, guid: ff8c75a8dd5edce44a7c40d6e88c1c45, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0.24
-      objectReference: {fileID: 0}
-    - target: {fileID: 199944785708652352, guid: ff8c75a8dd5edce44a7c40d6e88c1c45,
-        type: 2}
-      propertyPath: m_VelocityScale
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ff8c75a8dd5edce44a7c40d6e88c1c45, type: 2}
   m_IsPrefabParent: 0
