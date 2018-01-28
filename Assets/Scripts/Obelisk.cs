@@ -19,4 +19,5 @@ public class Obelisk : MonoBehaviour
         PlayerOwner = playerNum;
         //GetComponent<MeshRenderer>().material.color = colors[playerNum];
     }
+
 }
