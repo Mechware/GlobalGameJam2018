@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 23105683521942212}
   - component: {fileID: 114550003709820058}
   - component: {fileID: 54867454315426478}
+  - component: {fileID: 114534249155082800}
+  - component: {fileID: 114472279397372146}
   m_Layer: 0
   m_Name: Obelisk
   m_TagString: Untagged
@@ -100,6 +102,59 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!114 &114472279397372146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383145667112864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114534249155082800
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1383145667112864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 218
+    i1: 241
+    i2: 24
+    i3: 229
+    i4: 8
+    i5: 204
+    i6: 140
+    i7: 180
+    i8: 138
+    i9: 156
+    i10: 165
+    i11: 13
+    i12: 54
+    i13: 46
+    i14: 203
+    i15: 190
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114550003709820058
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -113,6 +168,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   PlayerOwner: -1
   Occupied: 0
+  colors:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 0, b: 1, a: 1}
 --- !u!136 &136602443038417568
 CapsuleCollider:
   m_ObjectHideFlags: 1

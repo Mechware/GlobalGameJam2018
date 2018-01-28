@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(BoxCollider))]
-public class ObeliskSpawner : MonoBehaviour {
+public class ObeliskSpawner : NetworkBehaviour {
 
     //public GameObject Player1, Player2;
     public GameObject Spawn1, Spawn2;
@@ -12,40 +13,41 @@ public class ObeliskSpawner : MonoBehaviour {
 
     private BoxCollider SpawnArea;
 
+    public bool Online = true;
 
 	// Use this for initialization
 	void Start () {
-        SpawnArea = GetComponent<BoxCollider>();
 
-        Spawn1.transform.position=SpawnArea.bounds.min;
-        Spawn2.transform.position=SpawnArea.bounds.max;
+        if(!Online)
+        {
+            SpawnArea = GetComponent<BoxCollider>();
 
-        RandomlySpawnObelisks(NumberOfObelisks);
-       // SpawnPlayers();
+            Spawn1.transform.position = SpawnArea.bounds.min;
+            Spawn2.transform.position = SpawnArea.bounds.max;
+
+            RandomlySpawnObelisks(NumberOfObelisks);
+            //SpawnPlayers();
+        }
 	}
-	
-    /*void SpawnPlayers()
-    {
-        Player1.transform.position = SpawnArea.bounds.min;
-        Player1.transform.LookAt(SpawnArea.bounds.center);
-        Quaternion temp = Player1.transform.rotation;
-        temp.x = 0;
-        temp.z = 0;
-        Player1.transform.rotation = temp;
 
-        Player2.transform.position = SpawnArea.bounds.max;
-        Player2.transform.LookAt(SpawnArea.bounds.center);
-        temp = Player2.transform.rotation;
-        temp.x = 0;
-        temp.z = 0;
-        Player2.transform.rotation = temp;
-    }*/
+    public override void OnStartServer() {
+        if(Online)
+        {
+            SpawnArea = GetComponent<BoxCollider>();
+
+            Spawn1.transform.position = SpawnArea.bounds.min;
+            Spawn2.transform.position = SpawnArea.bounds.max;
+
+            RandomlySpawnObelisks(NumberOfObelisks);
+        }
+    }
 
     void RandomlySpawnObelisks(int amount)
     {
         for(int i = 0; i < amount; i++)
         {
-            Instantiate(Obelisk, GetRandomSpotInSpawnArea(), Quaternion.identity);
+            var empty  = Instantiate(Obelisk, GetRandomSpotInSpawnArea(), Quaternion.identity);
+            NetworkServer.Spawn(empty);
         }
     }
 

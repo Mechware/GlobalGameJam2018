@@ -4,8 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.Utility;
+using UnityEngine.Networking; 
 
-public class ObeliskSwitcher : MonoBehaviour
+public class ObeliskSwitcher : NetworkBehaviour
 {
 
     
@@ -89,6 +90,8 @@ public class ObeliskSwitcher : MonoBehaviour
         }
 	}
 
+    
+
     private void CheckSwitchObelisk()
     {
         RaycastHit hit;
@@ -120,13 +123,26 @@ public class ObeliskSwitcher : MonoBehaviour
 
                 OnObeliskSwitchShot.Invoke();
                 flyingTowards = hit.transform.gameObject;
-                GameObject obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
+                CmdSpawnObelisk();
+              /*  var obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
+                NetworkServer.Spawn(obelisk);
                 obelisk.GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);
-                ownedObelisks.Add(obelisk.GetComponent<Obelisk>());
+                ownedObelisks.Add(obelisk.GetComponent<Obelisk>());*/
                 FlyingInfo.Init(ob.transform.position, transform.position);
             }
         }
     }
+
+    [Command]
+    void CmdSpawnObelisk() {
+        Destroy(flyingTowards);
+        var obelisk = Instantiate(ObeliskPrefab, transform.position, transform.rotation);
+        NetworkServer.Spawn(obelisk);
+        obelisk.GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);
+        ownedObelisks.Add(obelisk.GetComponent<Obelisk>());
+
+    }
+
 
     private void DieAndSwitch()
     {
