@@ -32,3 +32,6 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# Peice of shit file
+Assets/Art.meta~c7b407a9a981b40b4ab7744ba0fe9d1154db34c7.meta

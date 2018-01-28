@@ -47,8 +47,8 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 				CurrentTargetSpeed = ForwardSpeed;
 			}
 #if !MOBILE_INPUT
-            string player = playerNumber == 99 ? "" : playerNumber.ToString();
-            if (Input.GetAxis("Run"+ player) != 0)
+
+            if (Input.GetAxis("Run") != 0)
 	        {
 		        CurrentTargetSpeed *= RunMultiplier;
 		        m_Running = true;
@@ -149,8 +149,7 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
         RotateView();
 
-        string player = PlayerNumber == 99 ? "" : PlayerNumber.ToString();
-        if (CrossPlatformInputManager.GetButtonDown("Jump" + player) && !m_Jump)
+        if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
         {
             m_Jump = true;
         }
@@ -235,12 +234,11 @@ public class RigidbodyFirstPersonController : MonoBehaviour
 
     private Vector2 GetInput()
     {
-        string player = PlayerNumber == 99 ? "" : PlayerNumber.ToString();
 
         Vector2 input = new Vector2
             {
-                x = CrossPlatformInputManager.GetAxis("Horizontal" + player),
-                y = CrossPlatformInputManager.GetAxis("Vertical" + player)
+                x = CrossPlatformInputManager.GetAxis("Horizontal" ),
+                y = CrossPlatformInputManager.GetAxis("Vertical" )
             };
 		movementSettings.UpdateDesiredTargetSpeed(input, PlayerNumber);
         return input;
