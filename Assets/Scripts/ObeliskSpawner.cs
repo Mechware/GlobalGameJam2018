@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider))]
 public class ObeliskSpawner : MonoBehaviour {
 
-    public GameObject Player1, Player2;
+    //public GameObject Player1, Player2;
+    public GameObject Spawn1, Spawn2;
     public GameObject Obelisk;
     public int NumberOfObelisks;
 
@@ -16,11 +17,14 @@ public class ObeliskSpawner : MonoBehaviour {
 	void Start () {
         SpawnArea = GetComponent<BoxCollider>();
 
+        Spawn1.transform.position=SpawnArea.bounds.min;
+        Spawn2.transform.position=SpawnArea.bounds.max;
+
         RandomlySpawnObelisks(NumberOfObelisks);
-        SpawnPlayers();
+       // SpawnPlayers();
 	}
 	
-    void SpawnPlayers()
+    /*void SpawnPlayers()
     {
         Player1.transform.position = SpawnArea.bounds.min;
         Player1.transform.LookAt(SpawnArea.bounds.center);
@@ -35,7 +39,7 @@ public class ObeliskSpawner : MonoBehaviour {
         temp.x = 0;
         temp.z = 0;
         Player2.transform.rotation = temp;
-    }
+    }*/
 
     void RandomlySpawnObelisks(int amount)
     {
