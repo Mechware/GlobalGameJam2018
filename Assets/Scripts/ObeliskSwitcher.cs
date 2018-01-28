@@ -123,8 +123,6 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
         Physics.Raycast(start, dir, out hit);
 
-        Debug.DrawRay(start, dir);
-
         if(!hit.Equals(default(RaycastHit)))
         {
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
@@ -143,8 +141,6 @@ public class ObeliskSwitcher : NetworkBehaviour {
                     CmdSpawnObelisk();
 
                     FlyingInfo.Init(ob.transform.position, transform.position);
-                    CmdDestroyObelisk(ob.gameObject);
-
                 }
 
             }
@@ -162,6 +158,7 @@ public class ObeliskSwitcher : NetworkBehaviour {
         obelisk.GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);
         NetworkServer.Spawn(obelisk);   
         ownedObelisks.Add(obelisk.GetComponent<Obelisk>());
+
     }
 
 
