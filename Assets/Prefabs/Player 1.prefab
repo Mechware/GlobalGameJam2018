@@ -43,6 +43,8 @@ GameObject:
   - component: {fileID: 23977895283325882}
   - component: {fileID: 114064313335833298}
   - component: {fileID: 114067434675739170}
+  - component: {fileID: 114067866202286330}
+  - component: {fileID: 114877438926450332}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -160,9 +162,9 @@ Camera:
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
-    y: 0.5
+    y: 0
     width: 1
-    height: 0.5
+    height: 1
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 60
@@ -265,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81c9795a96c094f4cbde4d65546aa9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerNumber: -1
+  PlayerNumber: 99
   cam: {fileID: 20860916831454280}
   movementSettings:
     ForwardSpeed: 8
@@ -347,7 +349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDestroyDistance: 5
-  PlayerNumber: -1
+  PlayerNumber: 99
   ObeliskPrefab: {fileID: 1383145667112864, guid: daf118e508cc8cb48a9ca50d362ecbbe,
     type: 2}
   FlyingInfo:
@@ -378,11 +380,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8fa02eefe216384fb1b3a75339aeefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerOwner: -1
+  PlayerOwner: 99
   Occupied: 0
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
+--- !u!114 &114067866202286330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1434464315077308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 48
+    i1: 26
+    i2: 142
+    i3: 214
+    i4: 69
+    i5: 69
+    i6: 192
+    i7: 196
+    i8: 153
+    i9: 156
+    i10: 199
+    i11: 56
+    i12: 231
+    i13: 180
+    i14: 36
+    i15: 231
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 1
 --- !u!114 &114351617438065630
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -457,6 +491,27 @@ MonoBehaviour:
   rigidbodyFirstPersonController: {fileID: 114011783765841526}
   StrideInterval: 4
   RunningStrideLengthen: 0.722
+--- !u!114 &114877438926450332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1434464315077308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 3
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
 --- !u!114 &114893514300751522
 MonoBehaviour:
   m_ObjectHideFlags: 1
