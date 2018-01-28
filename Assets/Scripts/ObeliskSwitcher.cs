@@ -101,7 +101,7 @@ public class ObeliskSwitcher : NetworkBehaviour {
             if (isDone)
             {
                 OnObeliskSwitchedTo.Invoke();
-                Destroy(flyingTowards);
+                CmdDestroyObelisk(flyingTowards);
             }
             
             transform.position = newPos;
@@ -133,7 +133,6 @@ public class ObeliskSwitcher : NetworkBehaviour {
                 if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER) {
                     if (ob.Occupied) {
                         ob.GetComponent<ObeliskSwitcher>().DieAndSwitch();
-                        CmdDestroyObelisk(ob.gameObject);
                     } else {
                         return;//Play error sound???
                     }
@@ -163,7 +162,6 @@ public class ObeliskSwitcher : NetworkBehaviour {
         obelisk.GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);
         NetworkServer.Spawn(obelisk);   
         ownedObelisks.Add(obelisk.GetComponent<Obelisk>());
-
     }
 
 
