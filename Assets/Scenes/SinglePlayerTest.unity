@@ -843,6 +843,11 @@ Prefab:
       propertyPath: Spawn2
       value: 
       objectReference: {fileID: 844821471}
+    - target: {fileID: 114042485660172436, guid: 892222148b081064eb5be74dd2d4eb63,
+        type: 2}
+      propertyPath: Online
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 892222148b081064eb5be74dd2d4eb63, type: 2}
   m_IsPrefabParent: 0
