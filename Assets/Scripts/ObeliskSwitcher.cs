@@ -64,7 +64,8 @@ public class ObeliskSwitcher : NetworkBehaviour
 
     public override void OnStartLocalPlayer() {
         GetComponent<Obelisk>().Occupied = true;
-        PlayerNumber = GameObject.Find("NetworkPlayerWatchNugget").GetComponent<NetPlayer>().assignPlayer();
+        PlayerNumber = 0;//GameObject.Find("NetworkPlayerWatchNugget").GetComponent<NetPlayer>().assignPlayer();
+        GetComponent<Obelisk>().PlayerOwner=PlayerNumber;
         transform.Find("PlayerID").gameObject.GetComponentInChildren<Text>().text = PlayerNumber.ToString();
 
     }
@@ -78,7 +79,6 @@ public class ObeliskSwitcher : NetworkBehaviour
 	void Update () {
 
 
-        string player = PlayerNumber == 99 ? "" : PlayerNumber.ToString();
 
         if (FlyingInfo.FlyingTowardSomething)
         {
@@ -94,7 +94,7 @@ public class ObeliskSwitcher : NetworkBehaviour
             
             transform.position = newPos;
         }
-	    else if (Input.GetAxis("SwitchObelisk" + player) != 0)
+	    else if (Input.GetAxis("SwitchObelisk") != 0)
         {
             CheckSwitchObelisk();
         }
@@ -123,7 +123,7 @@ public class ObeliskSwitcher : NetworkBehaviour
                         ob.GetComponent<ObeliskSwitcher>().DieAndSwitch();
                         CmdDestroyObelisk(ob.gameObject);
                     } else {
-                        //Play error sound???
+                        return;//Play error sound???
                     }
                 } else {
                     //The object is yours or nobodies, therefore you can transmitt your STDs to it

@@ -243,7 +243,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4710590159073512}
-  - component: {fileID: 114640211591722982}
   - component: {fileID: 54383745363005670}
   - component: {fileID: 136606397048194224}
   - component: {fileID: 114813275384225252}
@@ -630,7 +629,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8fa02eefe216384fb1b3a75339aeefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerOwner: 99
+  PlayerOwner: 1
   Occupied: 1
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
@@ -707,7 +706,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDestroyDistance: 5
-  PlayerNumber: 99
+  PlayerNumber: 1
   ObeliskPrefab: {fileID: 1383145667112864, guid: daf118e508cc8cb48a9ca50d362ecbbe,
     type: 2}
   FlyingInfo:
@@ -727,18 +726,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114640211591722982
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1917497125732324}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57ed0c7be8e7a11479d66c0b1a024acc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerNumber: 99
 --- !u!114 &114655441508133340
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -809,7 +796,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameraTransform: {fileID: 4592180651563944}
-  PlayerNumber: 99
+  PlayerNumber: 1
   cam: {fileID: 20629016293972336}
   movementSettings:
     ForwardSpeed: 8
