@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityStandardAssets.Utility;
-using UnityEngine.Networking; 
+using UnityEngine.Networking;
+using UnityEngine.UI;
+
 
 public class ObeliskSwitcher : NetworkBehaviour
 {
@@ -62,6 +64,9 @@ public class ObeliskSwitcher : NetworkBehaviour
 
     public override void OnStartLocalPlayer() {
         GetComponent<Obelisk>().Occupied = true;
+        PlayerNumber = GameObject.Find("NetworkPlayerWatchNugget").GetComponent<NetPlayer>().assignPlayer();
+        transform.Find("PlayerID").gameObject.GetComponentInChildren<Text>().text = PlayerNumber.ToString();
+
     }
 
   /*  void Start()

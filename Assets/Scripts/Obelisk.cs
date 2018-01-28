@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Obelisk : MonoBehaviour
 {
+    //make network class
+    //create SyncVar for player owner
+    // hook = when player owner changes, change color 
+
 	public const int NO_OWNER = -1;
 	public int PlayerOwner = NO_OWNER;
 	public bool Occupied = false;
