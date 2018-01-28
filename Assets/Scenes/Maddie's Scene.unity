@@ -784,6 +784,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114466653384884414, guid: a63d8a4787744814485b034eb449f8e7,
+        type: 2}
+      propertyPath: m_NetworkAddress
+      value: 172.28.255.142
+      objectReference: {fileID: 0}
+    - target: {fileID: 114466653384884414, guid: a63d8a4787744814485b034eb449f8e7,
+        type: 2}
+      propertyPath: m_ServerBindToIP
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a63d8a4787744814485b034eb449f8e7, type: 2}
   m_IsPrefabParent: 0
