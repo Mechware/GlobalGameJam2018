@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Networking;
 
 [RequireComponent(typeof(BoxCollider))]
-public class ObeliskSpawner : MonoBehaviour {
+public class ObeliskSpawner : NetworkBehaviour {
 
     //public GameObject Player1, Player2;
     public GameObject Spawn1, Spawn2;
@@ -14,15 +15,25 @@ public class ObeliskSpawner : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
+	/*void Start () {
+        SpawnArea = GetComponent<BoxCollider>();
+
+        Spawn1.transform.position=SpawnArea.bounds.min;
+        Spawn2.transform.position=SpawnArea.bounds.max;
+
+       // RandomlySpawnObelisks(NumberOfObelisks);
+       // SpawnPlayers();
+	}*/
+
+    public override void OnStartServer() {
         SpawnArea = GetComponent<BoxCollider>();
 
         Spawn1.transform.position=SpawnArea.bounds.min;
         Spawn2.transform.position=SpawnArea.bounds.max;
 
         RandomlySpawnObelisks(NumberOfObelisks);
-       // SpawnPlayers();
-	}
+
+    }
 	
     /*void SpawnPlayers()
     {
@@ -45,7 +56,8 @@ public class ObeliskSpawner : MonoBehaviour {
     {
         for(int i = 0; i < amount; i++)
         {
-            Instantiate(Obelisk, GetRandomSpotInSpawnArea(), Quaternion.identity);
+            var empty  = Instantiate(Obelisk, GetRandomSpotInSpawnArea(), Quaternion.identity);
+            NetworkServer.Spawn(empty);
         }
     }
 
