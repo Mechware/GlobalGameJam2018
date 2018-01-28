@@ -6,15 +6,17 @@ using UnityEngine.Networking;
 public class NetPlayer : NetworkBehaviour {
 
     
-    public List<int> players = new List<int>();
+    public SyncList<int> players;
     [SyncVar]
     int playerNumber = -1;
 
 
     public int assignPlayer() {
-
+        if (!isServer) {
+            return -1;
+        }
         playerNumber++;
-        players.Add(playerNumber);
+        //players.Add(playerNumber);
         return playerNumber;
     }
 
