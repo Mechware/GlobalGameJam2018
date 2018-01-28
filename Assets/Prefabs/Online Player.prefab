@@ -1260,17 +1260,11 @@ MonoBehaviour:
   OnObeliskSwitchedTo:
     m_PersistentCalls:
       m_Calls: []
-<<<<<<< HEAD
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  playNum: {fileID: 0}
-=======
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   playNum: {fileID: 114910988493649180}
   red: {fileID: 1885061162280426}
   blue: {fileID: 1648024249446138}
->>>>>>> c34b3b2ee54e4be668d287ee470127ff71c707a8
 --- !u!114 &114655441508133340
 MonoBehaviour:
   m_ObjectHideFlags: 1
