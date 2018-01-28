@@ -116,6 +116,7 @@ public class ObeliskSwitcher : NetworkBehaviour
                 if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER) {
                     if (ob.Occupied) {
                         ob.GetComponent<ObeliskSwitcher>().DieAndSwitch();
+                        CmdDestroyObelisk(ob.gameObject);
                     } else {
                         //Play error sound???
                     }
