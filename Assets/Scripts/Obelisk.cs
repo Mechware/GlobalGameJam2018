@@ -15,7 +15,7 @@ public class Obelisk : NetworkBehaviour
 	public int PlayerOwner = NO_OWNER;
     public GameObject red, blue;
 	public bool Occupied = false;
-    public Text playNum;
+   // public Text playNum;
 
     public Color[] colors = new Color[]
     {
@@ -24,8 +24,8 @@ public class Obelisk : NetworkBehaviour
     };
 
     public override void OnStartServer() {
-        if(playNum!=null)
-        playNum.text = PlayerOwner.ToString();
+        //if(playNum!=null)
+        //playNum.text = PlayerOwner.ToString();
     }
 
 
@@ -38,8 +38,8 @@ public class Obelisk : NetworkBehaviour
     }
 
     public void changeNumber(int owner) {
-        if (playNum != null) {
-            playNum.text = owner.ToString();
+        if (red != null) {
+          //  playNum.text = owner.ToString();
 
             if(owner == 0) {
                 red.SetActive(true);

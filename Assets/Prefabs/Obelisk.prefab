@@ -79,7 +79,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1283838319423152
 GameObject:
   m_ObjectHideFlags: 1
@@ -921,7 +921,6 @@ MonoBehaviour:
   red: {fileID: 0}
   blue: {fileID: 0}
   Occupied: 0
-  playNum: {fileID: 0}
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
@@ -977,7 +976,6 @@ MonoBehaviour:
   red: {fileID: 0}
   blue: {fileID: 0}
   Occupied: 0
-  playNum: {fileID: 0}
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
@@ -1049,7 +1047,6 @@ MonoBehaviour:
   red: {fileID: 1041417408401638}
   blue: {fileID: 1858673508347382}
   Occupied: 0
-  playNum: {fileID: 114551404764176304}
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
