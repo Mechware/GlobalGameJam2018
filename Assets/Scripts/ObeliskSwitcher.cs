@@ -64,27 +64,38 @@ public class ObeliskSwitcher : NetworkBehaviour {
     public override void OnStartLocalPlayer() {
 
         GetComponent<Obelisk>().Occupied = true;
+       // CmdAssignPlayerNumber();
+    }
+
+    public override void OnStartClient() {
         CmdAssignPlayerNumber();
     }
 
-    private void Start() {
+    void Start() {
+      //  GetComponent<Obelisk>().Occupied = true;
+      //  CmdAssignPlayerNumber();
         changeID(PlayerNumber);
+
     }
 
     [Command]
     void CmdAssignPlayerNumber() {
 
         PlayerNumber=GameObject.Find("NetworkPlayerWatchNugget").GetComponent<NetPlayer>().assignPlayer();
+        GetComponent<Obelisk>().SetPlayerOwnership(PlayerNumber);
     }
 
     
     void changeID(int number) {
         playNum.text = number.ToString();
-
+        
         if(number == 0) {
             red.SetActive(true);
+            blue.SetActive(false);
         } else {
             blue.SetActive(true);
+            red.SetActive(false);
+
         }
 
     }
@@ -112,10 +123,10 @@ public class ObeliskSwitcher : NetworkBehaviour {
         }
 	}
 
-    
 
-    private void CheckSwitchObelisk()
-    {
+
+    private void CheckSwitchObelisk() {
+
         RaycastHit hit;
 
         Vector3 start = transform.position;
@@ -123,14 +134,12 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
         Physics.Raycast(start, dir, out hit);
 
-        if(!hit.Equals(default(RaycastHit)))
-        {
+        if (!hit.Equals(default(RaycastHit))) {
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
-            if(ob != null)
-            {
-                if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER) {
+            if (ob != null) {
+               /* if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER) {
                     if (ob.Occupied) {
-                        ob.GetComponent<ObeliskSwitcher>().DieAndSwitch();
+                        ob.GetComponent<ObeliskSwitcher>().CmdDieAndSwitch();
                     } else {
                         return;//Play error sound???
                     }
@@ -141,10 +150,24 @@ public class ObeliskSwitcher : NetworkBehaviour {
                     CmdSpawnObelisk();
 
                     FlyingInfo.Init(ob.transform.position, transform.position);
+                }*/
+
+            if(ob.PlayerOwner == PlayerNumber || ob.PlayerOwner == Obelisk.NO_OWNER && !ob.Occupied) {
+                    OnObeliskSwitchShot.Invoke();
+                    flyingTowards = hit.transform.gameObject;
+                    CmdSpawnObelisk();
+
+                    FlyingInfo.Init(ob.transform.position, transform.position);
+               } else {
+
+                        ob.GetComponent<ObeliskSwitcher>().CmdDieAndSwitch();
+                    
+
                 }
 
             }
         }
+    
     }
 
     [Command]
@@ -161,27 +184,24 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
     }
 
-
-    private void DieAndSwitch()
-    {
+    [Command]
+    private void CmdDieAndSwitch() {
+        if (isServer) { 
         // new pos
         Obelisk closestObelisk = null;
         float minDistance = float.MaxValue;
-        foreach(Obelisk ob in ownedObelisks)
-        {
+        foreach (Obelisk ob in ownedObelisks) {
             if (ob == null) continue;
-            if(Vector3.Distance(transform.position, ob.transform.position) < minDistance)
-            {
+            if (Vector3.Distance(transform.position, ob.transform.position) < minDistance) {
                 closestObelisk = ob;
             }
         }
 
-        if(closestObelisk == null)
-        {
+        if (closestObelisk == null) {
             print("PLAYER " + (PlayerNumber + 1) + "DIEEED");
             return;
         }
         flyingTowards = closestObelisk.gameObject;
         FlyingInfo.Init(closestObelisk.transform.position, transform.position);
-    }
+    } }
 }

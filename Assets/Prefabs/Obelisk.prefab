@@ -53,8 +53,6 @@ GameObject:
   - component: {fileID: 4787835456128792}
   - component: {fileID: 33607762290031606}
   - component: {fileID: 23246779942925122}
-  - component: {fileID: 114452683612530814}
-  - component: {fileID: 114064726689538742}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -906,24 +904,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 90
   m_CollisionDetection: 0
---- !u!114 &114064726689538742
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200644718018414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8fa02eefe216384fb1b3a75339aeefa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerOwner: -1
-  red: {fileID: 0}
-  blue: {fileID: 0}
-  Occupied: 0
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &114108905844621940
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -961,24 +941,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114452683612530814
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1200644718018414}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8fa02eefe216384fb1b3a75339aeefa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerOwner: -1
-  red: {fileID: 0}
-  blue: {fileID: 0}
-  Occupied: 0
-  colors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
 --- !u!114 &114472279397372146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1047,6 +1009,7 @@ MonoBehaviour:
   red: {fileID: 1041417408401638}
   blue: {fileID: 1858673508347382}
   Occupied: 0
+  playNum: {fileID: 114551404764176304}
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
