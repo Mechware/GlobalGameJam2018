@@ -1323,7 +1323,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDestroyDistance: 5
-  PlayerNumber: 1
   ObeliskPrefab: {fileID: 1383145667112864, guid: daf118e508cc8cb48a9ca50d362ecbbe,
     type: 2}
   FlyingInfo:
