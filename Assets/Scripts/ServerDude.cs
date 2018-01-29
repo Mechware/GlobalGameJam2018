@@ -12,7 +12,7 @@ public class ServerDude : MonoBehaviour {
     }
 
     public void respwnThem() {
-
+      //  ob.GetComponent<ObeliskSwitcher>()
     }
 
 

@@ -169,7 +169,8 @@ public class ObeliskSwitcher : NetworkBehaviour {
                     FlyingInfo.Init(ob.transform.position, transform.position);
                } else {
 
-                        ob.GetComponent<ObeliskSwitcher>().CmdDieAndSwitch();
+                    dude.GetComponent<ServerDude>().respwnThem();
+                        ob.GetComponent<ObeliskSwitcher>().RpcDieAndSwitch();
                     
 
                 }
@@ -193,8 +194,18 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
     }
 
-    [Command]
-    private void CmdDieAndSwitch() {
+   /* [ClientRpc]
+    void RpcMoveMe() {
+        if (isLocalPlayer) {
+            OnObeliskSwitchShot.Invoke();
+            flyingTowards = hit.transform.gameObject;
+
+            FlyingInfo.Init(ob.transform.position, transform.position);
+        }
+    }*/
+
+    [ClientRpc]
+     void RpcDieAndSwitch() {
         if (isServer) { 
         // new pos
         Obelisk closestObelisk = null;
