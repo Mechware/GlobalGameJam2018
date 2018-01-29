@@ -143,9 +143,9 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
         if (!hit.Equals(default(RaycastHit))) {
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
-
+            dude.GetComponent<ServerDude>().setOb(hit.transform.gameObject);
             if (ob != null) {
-                dude.GetComponent<ServerDude>().setOb(hit.transform.gameObject);
+                
                /* if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER) {
                     if (ob.Occupied) {
                         ob.GetComponent<ObeliskSwitcher>().CmdDieAndSwitch();
@@ -194,18 +194,19 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
     }
 
-   /* [ClientRpc]
+    [ClientRpc]
     void RpcMoveMe() {
         if (isLocalPlayer) {
-            OnObeliskSwitchShot.Invoke();
-            flyingTowards = hit.transform.gameObject;
-
-            FlyingInfo.Init(ob.transform.position, transform.position);
+            //  OnObeliskSwitchShot.Invoke();
+            // flyingTowards = hit.transform.gameObject;
+            transform.position=Vector3.zero;
+           // FlyingInfo.Init(ob.transform.position, transform.position);
         }
-    }*/
+    }
 
        public void moveThem() {
         RpcDieAndSwitch();
+        //RpcMoveMe();
     }
 
     [ClientRpc]
@@ -223,10 +224,14 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
         if (closestObelisk == null) {
             print("PLAYER " + (PlayerNumber + 1) + "DIEEED");
+                Destroy(gameObject);
             return;
         }
-        flyingTowards = closestObelisk.gameObject;
-        FlyingInfo.Init(closestObelisk.transform.position, transform.position);
+            transform.position = closestObelisk.transform.position;
+            Destroy(closestObelisk);
+
+       // flyingTowards = closestObelisk.gameObject;
+       // FlyingInfo.Init(closestObelisk.transform.position, transform.position);
         }
     }
 }

@@ -1355,9 +1355,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  playNum: {fileID: 0}
-  red: {fileID: 0}
-  blue: {fileID: 0}
+  playNum: {fileID: 114910988493649180}
+  red: {fileID: 1885061162280426}
+  blue: {fileID: 1648024249446138}
 --- !u!114 &114655441508133340
 MonoBehaviour:
   m_ObjectHideFlags: 1
