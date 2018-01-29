@@ -1165,6 +1165,7 @@ MonoBehaviour:
   red: {fileID: 0}
   blue: {fileID: 0}
   Occupied: 1
+  playNum: {fileID: 0}
   colors:
   - {r: 1, g: 0, b: 0, a: 1}
   - {r: 0, g: 0, b: 1, a: 1}
