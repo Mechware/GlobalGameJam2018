@@ -158,7 +158,12 @@ public class ObeliskSwitcher : NetworkBehaviour {
                     CmdSpawnObelisk();
 
                     FlyingInfo.Init(ob.transform.position, transform.position);
-               }
+               } else {
+
+                        ob.GetComponent<ObeliskSwitcher>().CmdDieAndSwitch();
+                    
+
+                }
 
             }
         }
