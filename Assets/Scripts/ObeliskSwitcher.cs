@@ -159,9 +159,13 @@ public class ObeliskSwitcher : NetworkBehaviour
 
         if (closestObelisk == null)
         {
+            Destroy(gameObject);
             print("PLAYER " + (thisObelisk.PlayerOwner + 1) + "DIEEED");
             return;
         }
+
+        transform.position = closestObelisk.transform.position;
+        Destroy(closestObelisk);
         flyingTowards = closestObelisk.gameObject;
         FlyingInfo.Init(closestObelisk.transform.position, transform.position);
     }

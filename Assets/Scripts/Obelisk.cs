@@ -33,20 +33,13 @@ public class Obelisk : NetworkBehaviour
         {
             Occupied = true;
             PlayerOwner = GameObject.Find("NetworkPlayerWatchNugget").GetComponent<NetPlayer>().assignPlayer();
-            CmdAssignPlayerNumber();
         }
         changeNumber(PlayerOwner);
     }
 
-    private void Update()
+    void Update()
     {
         changeNumber(PlayerOwner);
-    }
-
-    [Command]
-    void CmdAssignPlayerNumber()
-    {
-        PlayerOwner = GameObject.Find("NetworkPlayerWatchNugget").GetComponent<NetPlayer>().assignPlayer();
     }
 
     public void changeNumber(int owner) {
