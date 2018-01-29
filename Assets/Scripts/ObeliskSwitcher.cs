@@ -50,7 +50,7 @@ public class ObeliskSwitcher : NetworkBehaviour {
     public float MaxDestroyDistance = 5;
     [SyncVar(hook = "changeID")]
     public int PlayerNumber;
-    public GameObject ObeliskPrefab;
+    public GameObject ObeliskPrefab, dudePrefab;
     public FlyingInformation FlyingInfo = new FlyingInformation();
     public UnityEvent OnObeliskSwitchShot, OnObeliskSwitchedTo;
     public Text playNum;
@@ -127,6 +127,11 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
     private void CheckSwitchObelisk() {
 
+
+        GameObject dude = Instantiate(dudePrefab, transform.position, transform.rotation);
+        NetworkServer.Spawn(dude);
+
+
         RaycastHit hit;
 
         Vector3 start = transform.position;
@@ -134,9 +139,13 @@ public class ObeliskSwitcher : NetworkBehaviour {
 
         Physics.Raycast(start, dir, out hit);
 
+
+
         if (!hit.Equals(default(RaycastHit))) {
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
+
             if (ob != null) {
+                dude.GetComponent<ServerDude>().setOb(ob);
                /* if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER) {
                     if (ob.Occupied) {
                         ob.GetComponent<ObeliskSwitcher>().CmdDieAndSwitch();
@@ -152,7 +161,7 @@ public class ObeliskSwitcher : NetworkBehaviour {
                     FlyingInfo.Init(ob.transform.position, transform.position);
                 }*/
 
-            if(ob.PlayerOwner == PlayerNumber || ob.PlayerOwner == Obelisk.NO_OWNER && !ob.Occupied) {
+            if (ob.PlayerOwner == PlayerNumber || ob.PlayerOwner == Obelisk.NO_OWNER && !ob.Occupied) {
                     OnObeliskSwitchShot.Invoke();
                     flyingTowards = hit.transform.gameObject;
                     CmdSpawnObelisk();
