@@ -5,6 +5,7 @@ using UnityEngine;
 public class FiringMahLAZERRR : MonoBehaviour {
     public ParticleSystem lazer;
     public ParticleSystem speed;
+    public AudioSource sound;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class FiringMahLAZERRR : MonoBehaviour {
     public void FireLazer() {
         lazer.Play();
         speed.Play();
+        sound.Play();
     }
     
 
