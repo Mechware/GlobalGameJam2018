@@ -145,7 +145,7 @@ public class ObeliskSwitcher : NetworkBehaviour {
             Obelisk ob = hit.transform.GetComponent<Obelisk>();
 
             if (ob != null) {
-                dude.GetComponent<ServerDude>().setOb(ob);
+                dude.GetComponent<ServerDude>().setOb(hit.transform.gameObject);
                /* if (ob.PlayerOwner != PlayerNumber && ob.PlayerOwner != Obelisk.NO_OWNER) {
                     if (ob.Occupied) {
                         ob.GetComponent<ObeliskSwitcher>().CmdDieAndSwitch();
@@ -170,7 +170,7 @@ public class ObeliskSwitcher : NetworkBehaviour {
                } else {
 
                     dude.GetComponent<ServerDude>().respwnThem();
-                        ob.GetComponent<ObeliskSwitcher>().RpcDieAndSwitch();
+                        //ob.GetComponent<ObeliskSwitcher>().RpcDieAndSwitch();
                     
 
                 }
@@ -204,9 +204,13 @@ public class ObeliskSwitcher : NetworkBehaviour {
         }
     }*/
 
+       public void moveThem() {
+        RpcDieAndSwitch();
+    }
+
     [ClientRpc]
      void RpcDieAndSwitch() {
-        if (isServer) { 
+        if (isLocalPlayer) { 
         // new pos
         Obelisk closestObelisk = null;
         float minDistance = float.MaxValue;
@@ -223,5 +227,6 @@ public class ObeliskSwitcher : NetworkBehaviour {
         }
         flyingTowards = closestObelisk.gameObject;
         FlyingInfo.Init(closestObelisk.transform.position, transform.position);
-    } }
+        }
+    }
 }

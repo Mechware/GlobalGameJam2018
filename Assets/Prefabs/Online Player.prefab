@@ -1323,9 +1323,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxDestroyDistance: 5
-  PlayerNumber: 1
+  PlayerNumber: 0
   ObeliskPrefab: {fileID: 1383145667112864, guid: daf118e508cc8cb48a9ca50d362ecbbe,
     type: 2}
+  dudePrefab: {fileID: 1546391834001242, guid: cd1e0ac4ba9fb4d4eaac325e50a1303d, type: 2}
   FlyingInfo:
     FlyingSpeed: 100
     FlyingTowardSomething: 0
@@ -1354,9 +1355,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  playNum: {fileID: 114910988493649180}
-  red: {fileID: 1885061162280426}
-  blue: {fileID: 1648024249446138}
+  playNum: {fileID: 0}
+  red: {fileID: 0}
+  blue: {fileID: 0}
 --- !u!114 &114655441508133340
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class ServerDude : MonoBehaviour {
 
-    public Obelisk ob;
+    public GameObject ob;
 
-    public void setOb(Obelisk ob) {
+    public void setOb(GameObject ob) {
         this.ob = ob;
     }
 
     public void respwnThem() {
-      //  ob.GetComponent<ObeliskSwitcher>()
+        ob.GetComponent<ObeliskSwitcher>().moveThem();
     }
 
 
