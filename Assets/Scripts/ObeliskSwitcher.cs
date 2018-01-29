@@ -55,9 +55,6 @@ public class ObeliskSwitcher : NetworkBehaviour
     public GameObject ObeliskPrefab;
     public FlyingInformation FlyingInfo = new FlyingInformation();
     public UnityEvent OnObeliskSwitchShot, OnObeliskSwitchedTo;
-    public Text playNum;
-
-    public GameObject red, blue;
 
     private List<Obelisk> ownedObelisks = new List<Obelisk>();
 
